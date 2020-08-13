@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- ****************** 基本配置 **************** -->
+    <!-- 模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+    <!-- 公司或者组织的唯一标志，并且配置时生成的路径也是由此生成 -->
+    <groupId>org.example</groupId>
+    <!-- 本项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的 -->
+    <artifactId>myspringbootproject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- 打包的机制 -->
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- 依赖配置 -->
+    <!-- 该maven项目内包含的多个模块 -->
+    <modules>
+        <module>common</module>
+        <module>manage</module>
+        <module>platform</module>
+    </modules>
+    <!-- 用于定义pom常量 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <mybatis-plus-boot-starter.version>3.2.0</mybatis-plus-boot-starter.version>
+        <druid.version>1.0.29</druid.version>
+        <mysql.version>5.1.38</mysql.version>
+        <commons-collections.version>3.2</commons-collections.version>
+        <alipay-sdk-java.version>3.0.0</alipay-sdk-java.version>
+        <aliyun-java-sdk-core.version>4.0.6</aliyun-java-sdk-core.version>
+        <aliyun-java-sdk-dysmsapi.version>1.1.0</aliyun-java-sdk-dysmsapi.version>
+        <aliyun-sdk-oss.version>2.2.1</aliyun-sdk-oss.version>
+        <shiro-spring.version>1.4.0</shiro-spring.version>
+        <shiro.redis.version>3.1.0</shiro.redis.version>
+        <fastjson.version>1.2.37</fastjson.version>
+        <cfca-sadk.version>3.4.1.2</cfca-sadk.version>
+        <cfca-seal-sadk.version>3.1.3.0</cfca-seal-sadk.version>
+        <cfca-timestamp.version>4.0.3.0</cfca-timestamp.version>
+        <common-tsvo.version>3.5.3.3</common-tsvo.version>
+        <logback-cfca-jdk1.6.version>3.2.0.0</logback-cfca-jdk1.6.version>
+        <chain5j-core.version>4.3.8</chain5j-core.version>
+        <chain5j-jsonrpc.version>1.0.0</chain5j-jsonrpc.version>
+    </properties>
+
+    <!-- 在父模块中定义后，子模块不会直接使用对应依赖，但是在使用相同依赖的时候可以不加版本号 -->
+    <!-- 这样的好处是，父项目统一了版本，而且子项目可以在需要的时候才引用对应的依赖 -->
+    <dependencyManagement>
+        <!-- 项目相关依赖配置 -->
+        <dependencies>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+          <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+          </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- ****************** 构建配置 **************** -->
+
+
+    <!--发现依赖和扩展的远程仓库列表。 -->
+    <repositories>
+        <repository>
+            <id>gjsk</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+    </repositories>
+
+
+</project>
